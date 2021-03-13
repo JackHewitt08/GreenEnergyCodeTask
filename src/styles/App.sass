@@ -1,0 +1,147 @@
+$shadow-color: black
+$font-family-medium: "Gotham", sans-serif
+$font-family-light: "Gotham Pro", sans-serif
+$container-background-color: #fff
+
+@font-face
+    font-family: "Gotham"
+    src: url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot")
+    src: url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff") format("woff"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.svg#Gotham") format("svg")
+
+@font-face 
+    font-family: "Gotham Pro" 
+    src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot") 
+    src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff") format("woff"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.svg#Gotham Pro") format("svg")
+
+*
+    margin: 0
+    padding: 0
+    
+//box drop shadows
+@mixin box-shadow($shadow...)
+    -webkit-box-shadow: $shadow
+    -moz-box-shadow: $shadow
+    box-shadow: $shadow
+
+//center to document
+@mixin center-align($width: null, $height: null)
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+
+// left alignment inside container
+@mixin left-alignment-adjustment()
+    padding-left: 8%
+
+@mixin title-font-control()
+    font-family: $font-family-medium
+    font-weight: 500
+    color: #4c494b
+    font-size: 2.5rem
+    letter-spacing: -0.1rem
+    
+    
+@mixin sub-font-control()
+    font-family: $font-family-light
+    color: #b2afb1
+    letter-spacing: -0.03rem
+
+@mixin font-size-control($mobile-size)
+    @media(max-width: 600px)
+        font-size: $mobile-size
+    @media(max-width: 1200px)
+        font-size: $mobile-size * 1.5
+
+.App
+    background-color: rgba(0,0,0,0.1)
+    display: flex
+    overflow: hidden
+
+
+.content-container
+    @include box-shadow(0px 0px 4px rgba($shadow-color, .1))
+    @include center-align($width: 100vw , $height: 100vh)
+    background-color: $container-background-color
+    font-size: calc(10px + 2vmin)
+    width: 30%
+    height: 55%
+    min-width: 22rem
+    @media(max-width: 600px)
+        width: 90%
+    @media(max-width: 1200px)
+        width: 60%
+
+    .logo
+        @include left-alignment-adjustment()
+        width: 20%
+        padding-top: 10%
+
+    .title
+        @include left-alignment-adjustment()
+        @include title-font-control()
+        @include font-size-control(1.5rem)
+        padding-top: 4%
+        position: relative
+
+    .sub-title
+        @include left-alignment-adjustment()
+        @include sub-font-control()
+        @include font-size-control(0.8rem)
+        padding-top: 1%
+        position: relative
+        font-size: 1.3rem
+        font-weight: 100
+
+    .email-address-container
+        @include left-alignment-adjustment()
+        padding-top: 10%
+        .email-address-title
+            @include sub-font-control()
+            @include font-size-control(0.8rem)
+            display: block
+            position: relative
+            font-size: 1rem
+            font-weight: 500
+            padding-bottom: 1.5%
+        .email-address-form
+            width: 84%
+            display: block
+            padding: 1rem 1rem
+            border-radius: 5px
+            border: 1px solid lightGrey
+
+    .email-address-actions
+        @include sub-font-control()
+        @include font-size-control(0.8rem)
+        position: relative
+        padding-top: 1.5%
+        font-size: 0.9rem
+        font-weight: 200
+        color: #4c494b
+        > input[type="checkbox"]
+            width: 1.1rem
+            height:1.1rem
+            display: inline-block
+            vertical-align: middle
+        .email-address-checkbox-label
+            padding-left: 1%
+            display: inline-block
+            vertical-align: middle
+
+    .sign-in-button
+        @include sub-font-control()
+        color: #4c494b
+        position: relative
+        padding: 0.9rem 2.3rem
+        margin-top: 10%
+        left: 8%
+        background-color: $container-background-color
+        border-radius: 5px
+        border: 1px solid lightGrey
+        font-size: 1.1rem
+    
+
+
+    
