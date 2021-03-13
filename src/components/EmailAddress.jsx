@@ -1,6 +1,4 @@
 export const EmailAddress = () => {
-    let isChecked = false
-
     return (
         <div className="email-address-container">
             <form>
@@ -11,8 +9,6 @@ export const EmailAddress = () => {
                 <div className="email-address-actions">
                     <input 
                         type="checkbox" 
-                        checked={isChecked}
-                        onClick={() => isChecked = !isChecked}
                     />
                     <label for="checkbox" className="email-address-checkbox-label">
                         Remember this device
