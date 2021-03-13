@@ -12,7 +12,7 @@ export const EmailAddress = () => {
                     <input 
                         type="checkbox" 
                         checked={isChecked}
-                        onClick={isChecked = !isChecked}
+                        onClick={() => isChecked = !isChecked}
                     />
                     <label for="checkbox" className="email-address-checkbox-label">
                         Remember this device

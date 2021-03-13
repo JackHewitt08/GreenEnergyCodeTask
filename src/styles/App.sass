@@ -17,13 +17,11 @@ $container-background-color: #fff
     margin: 0
     padding: 0
     
-//box drop shadows
 @mixin box-shadow($shadow...)
     -webkit-box-shadow: $shadow
     -moz-box-shadow: $shadow
     box-shadow: $shadow
 
-//center to document
 @mixin center-align($width: null, $height: null)
     position: absolute
     top: 50%
@@ -31,7 +29,6 @@ $container-background-color: #fff
     transform: translate(-50%, -50%)
 
 
-// left alignment inside container
 @mixin left-alignment-adjustment()
     padding-left: 8%
 
@@ -55,10 +52,10 @@ $container-background-color: #fff
         font-size: $mobile-size * 1.5
 
 .App
-    background-color: rgba(0,0,0,0.1)
-    display: flex
+    background-color: #fafafa
+    width: 100vw
+    height: 100vh
     overflow: hidden
-
 
 .content-container
     @include box-shadow(0px 0px 4px rgba($shadow-color, .1))
@@ -97,6 +94,7 @@ $container-background-color: #fff
     .email-address-container
         @include left-alignment-adjustment()
         padding-top: 10%
+
         .email-address-title
             @include sub-font-control()
             @include font-size-control(0.8rem)
@@ -105,7 +103,10 @@ $container-background-color: #fff
             font-size: 1rem
             font-weight: 500
             padding-bottom: 1.5%
+
         .email-address-form
+            @include sub-font-control()
+            color: #4c494b
             width: 84%
             display: block
             padding: 1rem 1rem
@@ -120,11 +121,13 @@ $container-background-color: #fff
         font-size: 0.9rem
         font-weight: 200
         color: #4c494b
+
         > input[type="checkbox"]
             width: 1.1rem
             height:1.1rem
             display: inline-block
             vertical-align: middle
+            
         .email-address-checkbox-label
             padding-left: 1%
             display: inline-block
