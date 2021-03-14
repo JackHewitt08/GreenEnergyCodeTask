@@ -6,7 +6,9 @@ import { EmailAddress } from '../EmailAddress'
 export const ContentContainer = () => {
     return (
         <div className="content-container">
-            <img src={logo} className="logo" alt='Green Logo' />
+            <a className="logo" href="https://green.energy">
+                <img src={logo} alt='Green Logo' />
+            </a>
             <Title />
             <EmailAddress />
             <SignInButton />

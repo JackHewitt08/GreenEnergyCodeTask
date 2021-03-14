@@ -74,18 +74,21 @@ $container-background-color: #fff
         @include left-alignment-adjustment()
         width: 20%
         padding-top: 10%
+        display: block
+        > img
+            width:100%
 
     .title
         @include left-alignment-adjustment()
         @include title-font-control()
-        @include font-size-control(1.5rem)
+        @include font-size-control(1.1rem)
         padding-top: 4%
         position: relative
 
     .sub-title
         @include left-alignment-adjustment()
         @include sub-font-control()
-        @include font-size-control(0.8rem)
+        @include font-size-control(0.6rem)
         padding-top: 1%
         position: relative
         font-size: 1.3rem
@@ -97,7 +100,7 @@ $container-background-color: #fff
 
         .email-address-title
             @include sub-font-control()
-            @include font-size-control(0.8rem)
+            @include font-size-control(0.6rem)
             display: block
             position: relative
             font-size: 1rem
@@ -132,6 +135,7 @@ $container-background-color: #fff
             padding-left: 1%
             display: inline-block
             vertical-align: middle
+            @include font-size-control(0.6rem)
 
     .sign-in-button
         @include sub-font-control()
@@ -144,6 +148,11 @@ $container-background-color: #fff
         border-radius: 5px
         border: 1px solid lightGrey
         font-size: 1.1rem
+        transition: color 0.3s, background-color 0.3s
+        &:hover, &:active
+            background-color: #279150
+            color: #fafafa
+
     
 
 
