@@ -1,7 +1,11 @@
-$shadow-color: black
 $font-family-medium: "Gotham", sans-serif
 $font-family-light: "Gotham Pro", sans-serif
 $container-background-color: #fff
+$app-background-color: #fafafa
+$green-font-color:#279150
+$title-font-color: #4c494b
+$sub-font-color: #b2afb1
+$shadow-color: black
 
 @font-face
     font-family: "Gotham"
@@ -13,10 +17,6 @@ $container-background-color: #fff
     src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot") 
     src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff") format("woff"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.svg#Gotham Pro") format("svg")
 
-*
-    margin: 0
-    padding: 0
-    
 @mixin box-shadow($shadow...)
     -webkit-box-shadow: $shadow
     -moz-box-shadow: $shadow
@@ -35,14 +35,14 @@ $container-background-color: #fff
 @mixin title-font-control()
     font-family: $font-family-medium
     font-weight: 500
-    color: #4c494b
+    color: $title-font-color
     font-size: 2.5rem
     letter-spacing: -0.1rem
     
     
 @mixin sub-font-control()
     font-family: $font-family-light
-    color: #b2afb1
+    color: $sub-font-color
     letter-spacing: -0.03rem
 
 @mixin font-size-control($mobile-size)
@@ -51,8 +51,13 @@ $container-background-color: #fff
     @media(max-width: 1200px)
         font-size: $mobile-size * 1.5
 
+*
+    margin: 0
+    padding: 0
+    
+
 .App
-    background-color: #fafafa
+    background-color: $app-background-color
     width: 100vw
     height: 100vh
     overflow: hidden
@@ -62,9 +67,10 @@ $container-background-color: #fff
     @include center-align($width: 100vw , $height: 100vh)
     background-color: $container-background-color
     font-size: calc(10px + 2vmin)
-    width: 30%
-    height: 55%
+    width: 28%
+    height: max-content
     min-width: 22rem
+    min-height: 30rem
     @media(max-width: 600px)
         width: 90%
     @media(max-width: 1200px)
@@ -75,6 +81,7 @@ $container-background-color: #fff
         width: 20%
         padding-top: 10%
         display: block
+
         > img
             width:100%
 
@@ -109,12 +116,15 @@ $container-background-color: #fff
 
         .email-address-form
             @include sub-font-control()
-            color: #4c494b
+            color: $title-font-color
             width: 84%
             display: block
             padding: 1rem 1rem
             border-radius: 5px
             border: 1px solid lightGrey
+            &:hover, &:focus
+                border-color: $green-font-color 
+                outline-color: $green-font-color
 
     .email-address-actions
         @include sub-font-control()
@@ -123,7 +133,7 @@ $container-background-color: #fff
         padding-top: 1.5%
         font-size: 0.9rem
         font-weight: 200
-        color: #4c494b
+        color: $title-font-color
 
         > input[type="checkbox"]
             width: 1.1rem
@@ -139,19 +149,21 @@ $container-background-color: #fff
 
     .sign-in-button
         @include sub-font-control()
-        color: #4c494b
+        color: $title-font-color
         position: relative
         padding: 0.9rem 2rem
         margin-top: 12%
+        margin-bottom: 8%
         left: 8%
         background-color: $container-background-color
         border-radius: 5px
         border: 1px solid lightGrey
         font-size: 1.1rem
         transition: color 0.3s, background-color 0.3s
-        &:hover, &:active
-            background-color: #279150
-            color: #fafafa
+        &:hover
+            background-color: $green-font-color
+            color: $container-background-color
+
 
     
 
