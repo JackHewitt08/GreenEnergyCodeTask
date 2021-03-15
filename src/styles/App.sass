@@ -2,7 +2,7 @@ $font-family-medium: "Gotham", sans-serif
 $font-family-light: "Gotham Pro", sans-serif
 $container-background-color: #fff
 $app-background-color: #fafafa
-$green-font-color:#279150
+$green-font-color: #279150
 $title-font-color: #4c494b
 $sub-font-color: #b2afb1
 $shadow-color: black
@@ -12,9 +12,9 @@ $shadow-color: black
     src: url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot")
     src: url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff") format("woff"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.svg#Gotham") format("svg")
 
-@font-face 
-    font-family: "Gotham Pro" 
-    src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot") 
+@font-face
+    font-family: "Gotham Pro"
+    src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot")
     src: url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.woff") format("woff"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/056353a27c68233bab7e618c8b191d65.svg#Gotham Pro") format("svg")
 
 @mixin box-shadow($shadow...)
@@ -28,7 +28,6 @@ $shadow-color: black
     left: 50%
     transform: translate(-50%, -50%)
 
-
 @mixin left-alignment-adjustment()
     padding-left: 8%
 
@@ -38,68 +37,72 @@ $shadow-color: black
     color: $title-font-color
     font-size: 2.5rem
     letter-spacing: -0.1rem
-    
-    
+
 @mixin sub-font-control()
     font-family: $font-family-light
     color: $sub-font-color
     letter-spacing: -0.03rem
 
-@mixin font-size-control($mobile-size)
-    @media(max-width: 600px)
-        font-size: $mobile-size
-    @media(max-width: 1200px)
-        font-size: $mobile-size * 1.3
+@mixin font-size-control($desktop-size)
+    @media(min-width: 600px)
+        font-size: $desktop-size / 1.2
+    @media(min-width: 800px)
+        font-size: $desktop-size / 1.1
+    @media(min-width: 1200px)
+        font-size: $desktop-size
 
 *
     margin: 0
     padding: 0
-    
 
 .App
+    display: grid
+    grid-template-columns: 3vw 94vw 3vw
+    grid-template-rows: 3vw 96% auto 
+    grid-template-areas: ". . ." ". content ." ". . ."
     background-color: $app-background-color
     width: 100vw
     height: 100vh
     overflow: hidden
-
+    @media(min-width: 600px)
+        grid-template-columns: auto 400px auto
+        grid-template-rows: auto max-content auto
+    @media(min-width: 800px)
+        grid-template-columns: auto 500px auto
+        grid-template-rows: auto max-content auto
+    @media(min-width: 1200px)
+        grid-template-columns: auto 600px auto
+        grid-template-rows: auto max-content auto
 .content-container
     @include box-shadow(0px 0px 4px rgba($shadow-color, .1))
-    @include center-align($width: 100vw , $height: 100vh)
+    grid-area: content
     background-color: $container-background-color
     font-size: calc(10px + 2vmin)
-    width: 35%
-    height: max-content
-    min-width: 17.5rem
-    @media(max-width: 600px)
-        width: 90%
-    @media(max-width: 1200px)
-        width: 60%
-    @media(min-width: 2000px)
-        width: 25%
 
     .logo
         @include left-alignment-adjustment()
-        width: 20%
+        width: 35%
         padding-top: 10%
         display: block
 
         > img
-            width:100%
+            width: 100%
 
     .title
         @include left-alignment-adjustment()
         @include title-font-control()
-        @include font-size-control(1.1rem)
+        @include font-size-control(2rem)
+        font-size: 1.75rem
         padding-top: 4%
         position: relative
 
     .sub-title
         @include left-alignment-adjustment()
         @include sub-font-control()
-        @include font-size-control(0.6rem)
+        @include font-size-control(1rem)
         padding-top: 1%
         position: relative
-        font-size: 1.3rem
+        font-size: 0.8rem
         font-weight: 100
 
     .email-address-container
@@ -108,10 +111,10 @@ $shadow-color: black
 
         #email-address-title
             @include sub-font-control()
-            @include font-size-control(0.6rem)
+            @include font-size-control(1rem)
             display: block
             position: relative
-            font-size: 1rem
+            font-size: 0.8rem
             font-weight: 500
             padding-bottom: 1.5%
 
@@ -124,30 +127,30 @@ $shadow-color: black
             border-radius: 5px
             border: 1px solid lightGrey
             &:hover, &:focus
-                border-color: $green-font-color 
+                border-color: $green-font-color
                 outline-color: $green-font-color
 
     .email-address-actions
         @include sub-font-control()
-        @include font-size-control(0.8rem)
+        @include font-size-control(0.9rem)
         position: relative
         padding-top: 1.5%
-        font-size: 0.9rem
+        font-size: 0.8rem
         font-weight: 200
         color: $title-font-color
 
         > input[type="checkbox"]
             width: 1.1rem
-            height:1.1rem
+            height: 1.1rem
             display: inline-block
             vertical-align: middle
             cursor: pointer
-            
+
         #email-address-checkbox-label
+            @include font-size-control(1rem)
             padding-left: 1%
             display: inline-block
             vertical-align: middle
-            @include font-size-control(0.6rem)
 
     .sign-in-button
         @include sub-font-control()
@@ -166,9 +169,3 @@ $shadow-color: black
         &:hover
             background-color: $green-font-color
             color: $container-background-color
-
-
-    
-
-
-    

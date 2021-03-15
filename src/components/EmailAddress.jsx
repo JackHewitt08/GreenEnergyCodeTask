@@ -2,7 +2,7 @@ export const EmailAddress = () => {
     return (
         <div className="email-address-container">
             <form>
-                <label for="email-address-form" id="email-address-title">
+                <label htmlFor="email-address-form" id="email-address-title">
                     Email Address
                 </label>
                 <input type="text" className="email-address-form"/>
@@ -10,7 +10,7 @@ export const EmailAddress = () => {
                     <input 
                         type="checkbox" 
                     />
-                    <label for="checkbox" id="email-address-checkbox-label">
+                    <label htmlFor="checkbox" id="email-address-checkbox-label">
                         Remember this device
                     </label>
                 </div>
